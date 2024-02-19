@@ -1,6 +1,7 @@
 def main():
     book = book_path("books/frankenstein.txt")
-    print(book)
+    words_count = count_words(book)
+    print(f"{words_count} words in the Frankenstein book")
 
 
 
@@ -10,7 +11,10 @@ def book_path(path):
         file_contents = f.read()
     return file_contents
 
-
+def count_words(book):
+    words = book.split()
+    counted = len(words)
+    return counted
 
 
 main()
