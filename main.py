@@ -1,9 +1,10 @@
 def main():
     book = book_path("books/frankenstein.txt")
     words_count = count_words(book)
-    print(f"{words_count} words in the Frankenstein book")
-
-
+    letters_count = count_letters(book)
+    print("-- Begin report of books/frankenstein.txt --")
+    print(f"{words_count} words found in the document")
+    print(f"The {letters_count} character was found {words_count} times")
 
 
 def book_path(path):
@@ -16,5 +17,18 @@ def count_words(book):
     counted = len(words)
     return counted
 
+def count_letters(book):
+    new_dict = {}
+    book = book.lower()
+    for letter in book:
+        if letter in new_dict: 
+            new_dict[letter] += 1
+        else:
+            new_dict[letter] = 1
+            
+    return new_dict
+
+def sort_on(dict):
+    return dict[""]
 
 main()
