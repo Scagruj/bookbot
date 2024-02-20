@@ -2,9 +2,17 @@ def main():
     book = book_path("books/frankenstein.txt")
     words_count = count_words(book)
     letters_count = count_letters(book)
+    new_list = [{'letter': key, 'num': value}for key, value in letters_count.items()]
+    new_list.sort(reverse=True, key=sort_on)
     print("-- Begin report of books/frankenstein.txt --")
     print(f"{words_count} words found in the document")
-    print(f"The {letters_count} character was found {words_count} times")
+    
+    for dict in new_list:
+        if dict['letter'].isalpha():
+            print(f"The '{dict['letter']}' character was found {dict['num']} times")
+    print("--- End report ---")
+    
+
 
 
 def book_path(path):
@@ -29,6 +37,6 @@ def count_letters(book):
     return new_dict
 
 def sort_on(dict):
-    return dict[""]
+    return dict["num"]
 
 main()
